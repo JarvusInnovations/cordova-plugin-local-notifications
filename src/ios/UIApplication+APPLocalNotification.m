@@ -189,8 +189,10 @@
     for (UILocalNotification* notification in notifications)
     {
         NSString* fid = [NSString stringWithFormat:@"%@", notification.options.id];
+        // Exception occured when id was coming in as string type, did not respond to stringValue, safer to cast as string - KBC
+        NSString* idStr = [NSString stringWithFormat:@"%@", id];
         
-        if ([fid isEqualToString:[id stringValue]]) {
+        if ([fid isEqualToString:idStr]) {
             return notification;
         }
     }
